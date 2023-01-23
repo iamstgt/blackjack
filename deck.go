@@ -1,6 +1,10 @@
 package main 
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"github.com/brandondoesdev/slice-swap"
+)
 
 // Create a new type of deck which is a slice of strings.
 type deck []string
@@ -30,4 +34,11 @@ func (d deck) print() {
 // This is not a receiver function. 
 func deal(d deck, handSize int) (deck, deck, deck) {
 	return d[:handSize], d[handSize:handSize+2], d[handSize+2:]
+}
+
+func (d deck) shuffle() {
+	for index := range d {
+		newIndex := rand.Intn(len(d)-1)
+		swap.SwapS(d, index, newIndex)
+	}
 }
