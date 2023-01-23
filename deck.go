@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"github.com/brandondoesdev/slice-swap"
+	"time"
 )
 
 // Create a new type of deck which is a slice of strings.
@@ -36,9 +37,21 @@ func deal(d deck, handSize int) (deck, deck, deck) {
 	return d[:handSize], d[handSize:handSize+2], d[handSize+2:]
 }
 
+// This is the insufficient random function because the go random number generator always uses the exact same seed. 
+// To fix this, generating new seed value and using it as the seed to generate any random numbers are necessary.
+// func (d deck) shuffle() {
+// 	for index := range d {
+// 		newIndex := rand.Intn(len(d)-1)
+// 		swap.SwapS(d, index, newIndex)
+// 	}
+// }
+
 func (d deck) shuffle() {
+	source := rand.NewSource(time.Now().UnixNano()) // For generating random seed.
+	r := rand.New(source)
+
 	for index := range d {
-		newIndex := rand.Intn(len(d)-1)
+		newIndex := r.Intn(len(d)-1)
 		swap.SwapS(d, index, newIndex)
 	}
 }
