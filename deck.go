@@ -13,12 +13,12 @@ type deck []string
 func newDeck() deck {
 	cards := deck{}
 
-	cardSuits := [4]string{"❤️", "♦️", "♠️", "♣️"}
-	cardValues := [12]string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}
+	cardSuits := [4]string{"Heart", "Diamond", "Spade", "Clover"}
+	cardValues := [13]string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"}
 
 	for _, suit := range cardSuits {
 		for _, value := range cardValues {
-			cards = append(cards, suit+value)
+			cards = append(cards, suit + "of" +value)
 		}
 	}
 	return cards
