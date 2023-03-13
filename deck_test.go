@@ -1,13 +1,13 @@
-package main 
+package main
 
-import(
+import (
 	"testing"
 )
 
 func TestNewDeck(t *testing.T) {
-	d := newDeck()
+	cards := newDeck()
 
-	if len(d) != 52 {
-		t.Errorf("Expected deck length of 52, but got %v", len(d))
+	if len(cards) != 52 {
+		t.Errorf("Expected deck length of 52, but got %v", len(cards))
 	}
 }
